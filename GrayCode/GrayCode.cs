@@ -52,3 +52,19 @@ public class Solution {
         return list;
     }
 }
+
+
+public class Solution2 {
+    public IList<int> GrayCode(int n)
+    {
+        int digits = (int)Math.Pow(2, n);
+        IList<int> list = new List<int>();
+
+        for(uint i = 0; i < digits; i++) {
+            uint j = i >> 1;
+            list.Add((int)(i ^ j));
+        }
+
+        return list;
+    }
+}
