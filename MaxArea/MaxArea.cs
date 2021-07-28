@@ -22,3 +22,34 @@ public class Solution {
         return maxArea;
     }
 }
+
+public class Solution2 {
+    public int MaxArea(int[] height) {
+        int maxArea = 0;
+        int idxArea = 0;
+        int leftIdx = 0;
+        int rightIdx = height.Length - 1;
+
+        while(leftIdx < rightIdx ) {
+            if(height[leftIdx] == height[rightIdx]) {
+                idxArea = (rightIdx - leftIdx) * height[rightIdx];
+                rightIdx--;
+                leftIdx++;
+            }
+
+            else if(height[leftIdx] > height[rightIdx]) {
+                idxArea = (rightIdx - leftIdx) * height[rightIdx];
+                rightIdx--;
+            }
+
+            else if(height[leftIdx] < height[rightIdx]) {
+                idxArea = (rightIdx - leftIdx) * height[leftIdx];
+                leftIdx++;
+            }
+            
+            maxArea = idxArea > maxArea ? idxArea : maxArea;
+        }
+
+        return maxArea;
+    }
+}
